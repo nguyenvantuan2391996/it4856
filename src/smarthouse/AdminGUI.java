@@ -1,5 +1,6 @@
 package smarthouse;
 
+import com.emaraic.recorder.CamRecorder;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -204,7 +205,7 @@ public class AdminGUI extends JFrame {
         manageUserCodesButton = new JButton("Manage User IDs");
         managePrivilegesButton = new JButton("Manage Privileges");
         remoteOverrideButton = new JButton("Override House Settings");
-        logoutButton = new JButton("Logout");
+        logoutButton = new JButton("CAMERA");
 
         ViewLogsButton.setFont(new Font("Dialog", Font.PLAIN, 30));
         manageUserCodesButton.setFont(new Font("Dialog", Font.PLAIN, 30));
@@ -1278,9 +1279,10 @@ public class AdminGUI extends JFrame {
                 removeUserPanel.setVisible(false);
                 userCodesMainPanel.setVisible(true);
             } else if (e.getSource() == logoutButton) {
-                adminMainMenuPanel.setVisible(false);
-                failPanel.setVisible(true);
-                loggedIn = false;
+//                adminMainMenuPanel.setVisible(false);
+//                failPanel.setVisible(true);
+//                loggedIn = false;
+                CamRecorder camera = new CamRecorder();
             } else if (e.getSource() == userCodesButton3) {
                 userCodesMainPanel.setVisible(false);
                 updateUserPanel.setVisible(true);

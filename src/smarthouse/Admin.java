@@ -5,14 +5,16 @@ package smarthouse;
  *
  * @author stevenpatton
  */
-import java.util.ArrayList;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 
 public class Admin {
-
+    public static int check = 3;
     private static ArrayList userList;
 
     private User user;
@@ -61,6 +63,20 @@ public class Admin {
             User x = (User) userList.get(i);
             if (x.getID().equals(userID)) {
                 return true;
+            }
+        }
+        check--;
+        if(check <= 0) {
+            File audio = new File("Buzzer.wav");
+            try {
+                Clip clip = AudioSystem.getClip();
+                clip.open(AudioSystem.getAudioInputStream(audio));
+                clip.start();
+                
+                // visible checkcamera
+                CheckByCamera camera = new CheckByCamera();
+                camera.setVisible(true);
+            } catch (Exception e) {
             }
         }
         return false;
